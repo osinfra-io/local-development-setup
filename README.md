@@ -1,4 +1,4 @@
-# Development environment setup scripts for infrastructure as code (IaC)
+# Development environment setup scripts for Infrastructure as Code (IaC)
 
 ## Ubuntu Setup
 
