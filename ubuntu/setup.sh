@@ -71,6 +71,9 @@ gem install bundle
 gem update
 bundle update
 
+# zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 # Pathogen.vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -98,6 +101,9 @@ cat << EOF > ~/bin/update.sh
 
 source ~/.zshrc
 
+# Oh-my-zsh
+omz update
+
 # Ruby
 gem update --system
 gem update
@@ -119,8 +125,9 @@ brew cleanup
 cd ~/.vim/bundle/vim-terraform
 git pull
 
-# Oh-my-zsh
-omz update
+# zsh-autocomplete
+cd $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git pull
 EOF
 
 chmod 755 ~/bin/update.sh
