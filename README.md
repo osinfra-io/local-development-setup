@@ -20,7 +20,7 @@ Change your default shell to Zsh and exit.
 chsh -s /home/linuxbrew/.linuxbrew/bin/zsh; exit
 ```
 
-When you start Terminal you will be prompted to set up Powerlevel10k. Choose the options you like and go!
+When you start your terminal you will be prompted to set up Powerlevel10k. Choose the options you like and go!
 
 Once complete you can stay up to date by running the generated update script.
 

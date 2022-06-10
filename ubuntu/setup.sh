@@ -68,8 +68,6 @@ Style/FrozenStringLiteralComment:
 EOF
 
 gem install bundle
-gem update
-bundle update
 
 # zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -105,9 +103,9 @@ source ~/.zshrc
 omz update
 
 # Ruby
-gem update --system
-gem update
-gem cleanup
+yes | gem update --system
+yes | gem update
+yes | gem cleanup
 bundle update
 
 # Ubuntu
@@ -142,7 +140,7 @@ sudo apt update && sudo apt -y install google-cloud-sdk
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Shell Setup
-cp .zshrc .zshrc-`date +"%Y%m%d_%H%M%S"`.bak
+cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
 echo 'alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"' >> ~/.zshrc
 echo 'source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
 echo 'source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
@@ -154,3 +152,5 @@ echo 'export BUNDLE_GEMFILE=$HOME/Gemfile' >> ~/.zshrc
 
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
+
+~/bin/update.sh
