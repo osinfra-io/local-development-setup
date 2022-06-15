@@ -121,7 +121,7 @@ cd ~/.vim/bundle/vim-terraform
 git pull
 
 # zsh-autocomplete
-cd $ZSH_CUSTOM/plugins/zsh-autosuggestions
+cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
 EOF
 
