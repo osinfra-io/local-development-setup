@@ -151,6 +151,4 @@ cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
 EOF
 
-# Run update.sh
 chmod 755 ~/bin/update.sh
-~/bin/update.sh
