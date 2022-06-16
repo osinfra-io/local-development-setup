@@ -47,17 +47,16 @@ The [Google Cloud SDK](https://cloud.google.com/sdk) provides tools and librarie
 ### Open-source tools
 
 - [checkov](https://github.com/bridgecrewio/checkov)
-- [chef-inspec](https://github.com/inspec/inspec)
 - [github-cli](https://github.com/cli/cli)
 - [infracost](https://github.com/infracost/infracost)
-- [inspec-gcp](https://github.com/inspec/inspec-gcp)
-- [inspec-aws](https://github.com/inspec/inspec-aws)
-- [inspec-azure](https://github.com/inspec/inspec-azure)
+- [inspec](https://github.com/inspec/inspec)
 - [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
+- [pathogen.vim](https://github.com/tpope/vim-pathogen)
 - [pre-commit](https://github.com/pre-commit/pre-commit)
 - [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
 - [terraform](https://github.com/hashicorp/terraform)
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+- [vim-terraform](https://github.com/hashivim/vim-terraform)
 - [yor](https://github.com/bridgecrewio/yor)
 
 ### Zsh stuff
