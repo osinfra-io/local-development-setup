@@ -123,7 +123,7 @@ cat << EOF > ~/bin/update.sh
 source ~/.zshrc
 
 # Oh-my-zsh
-omz update
+omz update --unattended
 
 # Ruby
 yes | gem update --system
