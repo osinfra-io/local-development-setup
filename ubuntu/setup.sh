@@ -117,13 +117,13 @@ echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/b
 
 # Create Update Script
 mkdir -p ~/bin
-cat << EOF > ~/bin/update.sh
+cat << 'EOF' > ~/bin/update.sh
 #!/usr/bin/env zsh
 
 source ~/.zshrc
 
 # Oh-my-zsh
-$ZSH/tools/upgrade.sh
+${ZSH}/tools/upgrade.sh
 
 # Ruby
 yes | gem update --system
