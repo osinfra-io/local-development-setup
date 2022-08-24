@@ -67,7 +67,7 @@ Style/FrozenStringLiteralComment:
           Enabled: false
 EOF
 
-gem install bundle
+gem install bundler
 
 # Pathogen.vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle
