@@ -3,7 +3,7 @@
 # Ubuntu
 sudo apt update
 sudo apt -y upgrade
-sudo apt -y install build-essential apt-transport-https
+sudo apt -y install build-essential apt-transport-https vim
 
 # Homebrew
 yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"

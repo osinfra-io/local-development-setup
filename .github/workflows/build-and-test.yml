@@ -55,4 +55,4 @@ jobs:
 
       - name: Test Docker Image
         run: |
-          docker run --rm ghcr.io/osinfra-io/local-development-setup:test update.sh
+          docker run --rm ghcr.io/osinfra-io/local-development-setup:test
