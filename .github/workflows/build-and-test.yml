@@ -43,7 +43,7 @@ jobs:
       # Build and Test Docker images
       # https://github.com/marketplace/actions/build-and-push-docker-images
 
-      - name: Build and Test Docker Image
+      - name: Build Docker Image
         uses: docker/build-push-action@v3.1.1
         with:
           context: .
@@ -53,6 +53,6 @@ jobs:
           cache-to: type=inline
           load: true
 
-      - name: Test
+      - name: Test Docker Image
         run: |
-          docker run --rm ghcr.io/osinfra-io/local-development-setup:test
+          docker run --rm ghcr.io/osinfra-io/local-development-setup:test update.sh

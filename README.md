@@ -2,6 +2,13 @@
 
 [![Docker Build and Test](https://github.com/osinfra-io/local-development-setup/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/osinfra-io/local-development-setup/actions/workflows/build-and-test.yml)
 
+## Goals
+
+When you invest in Infrastructure as Code (IaC), you will find that onboarding developers takes time and can be confusing for people new to development, limiting contributions.
+
+- Standardized IaC developer environments
+- Simplify onboarding so new IaC developers can contribute easier
+
 ## Ubuntu Setup
 
 To install all the local tools we will need you can run the following commands.

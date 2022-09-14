@@ -26,6 +26,7 @@ tools=(
     kubectl
     kubectx
     k9s
+    linux-headers@5.15
     terraform-docs
     pre-commit
     romkatv/powerlevel10k/powerlevel10k
@@ -57,7 +58,6 @@ source 'https://rubygems.org'
 gem 'kitchen-terraform'
 gem 'inspec'
 gem 'rubocop'
-gem 'cookstyle'
 EOF
 
 export BUNDLE_GEMFILE="~/Gemfile"
@@ -79,7 +79,7 @@ git clone https://github.com/hashivim/vim-terraform.git
 
 cat << EOF > ~/.vimrc
 set visualbell
-  
+
 execute pathogen#infect()
 
 filetype plugin indent on

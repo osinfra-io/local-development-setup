@@ -1,4 +1,4 @@
-name: Add To GitHub Projects 
+name: Add To GitHub Projects
 
 on:
   issues:
@@ -20,7 +20,7 @@ jobs:
     steps:
       # Add To GitHub Projects Beta
       # https://github.com/marketplace/actions/add-to-github-projects-beta
-      
+
       - name: Add To GitHub IaC Project
         uses: actions/add-to-project@v0.3.0
         with:
