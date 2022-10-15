@@ -16,6 +16,9 @@ go install github.com/terraform-docs/terraform-docs@v0.16.0
 # Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+# Infracost
+curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
+
 # Automatically enable pre-commit on repositories
 git config --global init.templateDir ~/.git-template
 pre-commit init-templatedir ~/.git-template
