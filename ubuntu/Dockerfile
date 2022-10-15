@@ -6,11 +6,11 @@ RUN chsh vscode -s /usr/bin/zsh
 
 USER vscode
 
-COPY ubuntu/setup.sh .
+COPY setup.sh .
 RUN /bin/bash setup.sh
 
 # Reasonable defaults for Powerlevel10k
-COPY ubuntu/.p10k.zsh ~/.p10k.zsh
+COPY ../shared/.p10k.zsh ~/.p10k.zsh
 RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 
 # checkov:skip=BC_DKR_4: We want this to run on every build
