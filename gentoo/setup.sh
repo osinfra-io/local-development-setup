@@ -3,9 +3,18 @@
 # Gentoo
 sudo emerge --sync
 sudo emerge --update --deep --newuse @world
-sudo emerge app-shells/zsh app-shells/zsh-syntax-highlighting dev-vcs/git dev-lang/python \
-dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
+sudo emerge app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
+dev-python/pip dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
 app-admin/vault app-admin/kubectx 
+
+# Pip
+pip3 install checkov --user
+
+# Go
+go install github.com/terraform-docs/terraform-docs@v0.16.0
+
+# Powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Automatically enable pre-commit on repositories
 git config --global init.templateDir ~/.git-template
@@ -62,6 +71,11 @@ echo 'export GPG_TTY=$TTY' >> ~/.zshrc
 echo 'export EDITOR=vim' >> ~/.zshrc
 echo 'export RUBYOPT="-W:no-deprecated -W:no-experimental"' >> ~/.zshrc
 echo 'export BUNDLE_GEMFILE=$HOME/Gemfile' >> ~/.zshrc
+cat << 'EOF' >> ~/.zshrc
+autoload -U compinit promptinit
+      compinit
+      promptinit; prompt gentoo
+EOF
 
 # Create Update Script
 mkdir -p ~/bin
@@ -91,6 +105,9 @@ git pull
 # zsh-autocomplete
 cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
+
+# Pip
+pip3 install -U checkov --user
 
 EOF
 
