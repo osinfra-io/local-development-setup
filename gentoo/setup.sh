@@ -3,6 +3,9 @@
 # Gentoo
 sudo emerge --sync
 sudo emerge --update --deep --newuse @world
+sudo emerge app-shells/zsh app-shells/zsh-syntax-highlighting dev-vcs/git dev-lang/python \
+dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
+app-admin/vault app-admin/kubectx 
 
 # Automatically enable pre-commit on repositories
 git config --global init.templateDir ~/.git-template
