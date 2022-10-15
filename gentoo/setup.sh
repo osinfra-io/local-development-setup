@@ -5,7 +5,7 @@ sudo emerge --sync
 sudo emerge --update --deep --newuse @world
 sudo emerge app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
 dev-python/pip dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
-app-admin/vault app-admin/kubectx 
+app-admin/vault app-admin/kubectx dev-util/github-cli
 
 # Pip
 pip3 install checkov --user
