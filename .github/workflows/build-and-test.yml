@@ -43,16 +43,30 @@ jobs:
       # Build and Test Docker images
       # https://github.com/marketplace/actions/build-and-push-docker-images
 
-      - name: Build Docker Image
+      - name: Build Ubuntu Docker Image
         uses: docker/build-push-action@v3.2.0
         with:
-          context: .
+          context: ubuntu
           tags: |
-            ghcr.io/osinfra-io/local-development-setup:test
-          cache-from: type=registry,ref=ghcr.io/osinfra-io/local-development-setup:latest
+            ghcr.io/osinfra-io/ubuntu:test
+          cache-from: type=registry,ref=ghcr.io/osinfra-io/ubuntu:latest
           cache-to: type=inline
           load: true
 
-      - name: Test Docker Image
+      - name: Test Ubuntu Docker Image
         run: |
-          docker run --rm ghcr.io/osinfra-io/local-development-setup:test
+          docker run --rm ghcr.io/osinfra-io/ubuntu:test
+
+      - name: Build Gentoo Docker Image
+        uses: docker/build-push-action@v3.2.0
+        with:
+          context: gentoo
+          tags: |
+            ghcr.io/osinfra-io/ubuntu:test
+          cache-from: type=registry,ref=ghcr.io/osinfra-io/gentoo:latest
+          cache-to: type=inline
+          load: true
+
+      - name: Test Gentoo Docker Image
+        run: |
+          docker run --rm ghcr.io/osinfra-io/gentoo:test

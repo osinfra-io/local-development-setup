@@ -35,12 +35,22 @@ jobs:
       # Build and Push Docker to GitHub Container Registry
       # https://github.com/marketplace/actions/build-and-push-docker-images
 
-      - name: Build and Push to GitHub Container Registry
+      - name: Build and Push Ubuntu to GitHub Container Registry
         uses: docker/build-push-action@v3.2.0
         with:
-          context: .
+          context: ubuntu
           tags: |
-            ghcr.io/osinfra-io/local-development-setup:latest
-          cache-from: type=registry,ref=ghcr.io/osinfra-io/local-development-setup:latest
+            ghcr.io/osinfra-io/ubuntu:latest
+          cache-from: type=registry,ref=ghcr.io/osinfra-io/ubuntu:latest
+          cache-to: type=inline
+          push: true
+
+      - name: Build and Push Gentoo to GitHub Container Registry
+        uses: docker/build-push-action@v3.2.0
+        with:
+          context: gentoo
+          tags: |
+            ghcr.io/osinfra-io/gentoo:latest
+          cache-from: type=registry,ref=ghcr.io/osinfra-io/gentoo:latest
           cache-to: type=inline
           push: true

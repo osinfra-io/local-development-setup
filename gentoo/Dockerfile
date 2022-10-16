@@ -4,8 +4,10 @@ HEALTHCHECK NONE
 # Create the vscode user
 RUN useradd -m -G wheel vscode \
 	&& emerge --sync \
-	&& emerge sudo \
+	&& emerge app-admin/sudo  app-shells/zsh \
 	&& echo "vscode ALL=(ALL) NOPASSWD:ALL" | EDITOR='tee -a' visudo
+
+RUN chsh vscode -s /bin/zsh
 
 USER vscode
 
