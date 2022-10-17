@@ -1,9 +1,16 @@
 FROM gentoo/stage3:amd64-nomultilib-openrc-20221010
 HEALTHCHECK NONE
 
+COPY make.conf /etc/portage/make.conf
+RUN rm -rf /etc/portage/package.use
+COPY package.use /etc/portage/package.use
+
 # Create the vscode user
+
 RUN useradd -m -G wheel vscode \
-	&& emerge --sync \
+	&& emerge-webrsync \
+	&& emerge --update --deep --newuse @world \
+	&& emerge --depclean \
 	&& emerge app-admin/sudo  app-shells/zsh \
 	&& echo "vscode ALL=(ALL) NOPASSWD:ALL" | EDITOR='tee -a' visudo
 
@@ -12,6 +19,7 @@ RUN chsh vscode -s /bin/zsh
 USER vscode
 
 COPY setup.sh .
+
 RUN /bin/bash setup.sh
 
 # Reasonable defaults for Powerlevel10k

@@ -1,0 +1,16 @@
+app-shells/zsh unicode
+dev-lang/python ssl sqlite
+dev-lang/ruby ssl
+dev-vcs/git gpg curl
+net-misc/curl ssl openssl
+net-misc/openssh ssl
+net-misc/rsync ssl
+
+sys-apps/systemd-utils tmpfiles udev
+
+*/* CURL_SSL: openssl
+
+*/* PYTHON_TARGETS: python3_11
+*/* PYTHON_SINGLE_TARGET: python3_11
+
+*/* RUBY_TARGETS: ruby31
