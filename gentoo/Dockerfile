@@ -1,11 +1,10 @@
-FROM gentoo/stage3:amd64-nomultilib-openrc-20221010
+FROM gentoo/stage3:amd64-nomultilib-openrc-20221017
+
 HEALTHCHECK NONE
 
 COPY make.conf /etc/portage/make.conf
 RUN rm -rf /etc/portage/package.use
 COPY package.use /etc/portage/package.use
-
-# Create the vscode user
 
 RUN useradd -m -G wheel vscode \
 	&& emerge-webrsync \
@@ -18,15 +17,17 @@ RUN chsh vscode -s /bin/zsh
 
 USER vscode
 
-COPY setup.sh .
-
-RUN /bin/bash setup.sh
+COPY setup.sh /tmp/setup.sh
+RUN /bin/bash /tmp/setup.sh
 
 # Reasonable defaults for Powerlevel10k
-COPY .p10k.zsh ~/.p10k.zsh
-RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
+
+COPY .p10k.zsh /home/vscode/.p10k.zsh
+RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> /home/vscode/.zshrc
+RUN sed -i 's/^ZSH_THEME=".\+"$/ZSH_THEME=\"powerlevel9k\/powerlevel10k"/g' /home/vscode/.zshrc
 
 # checkov:skip=BC_DKR_4: We want this to run on every build
-RUN ~/bin/update.sh
+
+RUN /home/vscode/bin/update.sh
 
 CMD ["zsh"]

@@ -1,7 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: docker
-    directory: /
+    directory: /gentoo
+    schedule:
+      interval: daily
+  - package-ecosystem: docker
+    directory: /ubuntu
     schedule:
       interval: daily
   - package-ecosystem: github-actions
