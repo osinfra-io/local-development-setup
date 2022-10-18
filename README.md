@@ -9,7 +9,7 @@ When you invest in Infrastructure as Code (IaC), you will find that onboarding d
 - Standardized IaC developer environments
 - Simplify onboarding so new IaC developers can contribute easier
 
-## <img align="left" width="35" height="35" src="https://user-images.githubusercontent.com/1610100/194944104-53a1b3f0-81c5-4759-835d-9b3a8608f38e.png"> Gentoo Setup
+## <img align="left" width="35" height="35" src="https://user-images.githubusercontent.com/1610100/194944104-53a1b3f0-81c5-4759-835d-9b3a8608f38e.png">Gentoo Setup
 
 To install all the local tools we will need you can run the following commands.
 
@@ -39,7 +39,7 @@ Once complete you can stay up to date by running the generated update script.
 ~/bin/update.sh
 ```
 
-## <img align="left" width="35" height="35" src="https://user-images.githubusercontent.com/1610100/196566203-0acc19c8-f1d9-4481-9424-24da28c53d99.png"> Ubuntu Setup
+## <img align="left" width="35" height="35" src="https://user-images.githubusercontent.com/1610100/196566203-0acc19c8-f1d9-4481-9424-24da28c53d99.png">Ubuntu Setup
 
 To install all the local tools we will need you can run the following commands.
 
