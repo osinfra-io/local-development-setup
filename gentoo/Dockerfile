@@ -24,7 +24,7 @@ RUN /bin/bash /tmp/setup.sh
 
 COPY .p10k.zsh /home/vscode/.p10k.zsh
 RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> /home/vscode/.zshrc
-RUN sed -i 's/^ZSH_THEME=".\+"$/ZSH_THEME=\"powerlevel9k\/powerlevel10k"/g' /home/vscode/.zshrc
+RUN sed -i 's/^ZSH_THEME=".\+"$/ZSH_THEME=\"powerlevel10k\/powerlevel10k"/g' /home/vscode/.zshrc
 
 # checkov:skip=BC_DKR_4: We want this to run on every build
 
