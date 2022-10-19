@@ -1,9 +1,7 @@
 #!/usr/bin/env zsh
 
 # Gentoo
-sudo emerge --sync
-sudo emerge --update --deep --newuse @world
-sudo emerge app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
+sudo emerge app-editors/vim app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
 dev-python/pip dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
 app-admin/vault app-admin/kubectx dev-util/github-cli
 
@@ -12,9 +10,6 @@ pip3 install checkov --user
 
 # Go
 go install github.com/terraform-docs/terraform-docs@v0.16.0
-
-# Powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Infracost
 curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
@@ -59,12 +54,17 @@ let g:terraform_align=1
 EOF
 
 # Google Cloud SDK
+curl https://sdk.cloud.google.com > install.sh
+bash install.sh --disable-prompts
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Shell Setup
 cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
@@ -91,9 +91,9 @@ source ~/.zshrc
 ${ZSH}/tools/upgrade.sh
 
 # Gentoo
-sudo emerge --sync
-sudo emerge --update --deep --newuse @world
-sudo emerge --depclean --quiet
+sudo emerge --ask=n --sync
+sudo emerge --ask=n --update --deep --newuse @world
+sudo emerge --ask=n --depclean --quiet
 
 # Ruby
 yes | sudo gem update --system

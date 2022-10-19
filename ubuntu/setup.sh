@@ -23,6 +23,7 @@ tools=(
     go
     hashicorp/tap/terraform
     helm
+    infracost
     kubectl
     kubectx
     k9s
