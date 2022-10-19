@@ -48,7 +48,7 @@ jobs:
         with:
           context: gentoo
           tags: |
-            ghcr.io/osinfra-io/ubuntu:test
+            ghcr.io/osinfra-io/gentoo:test
           cache-from: type=registry,ref=ghcr.io/osinfra-io/gentoo:latest
           cache-to: type=inline
           load: true
