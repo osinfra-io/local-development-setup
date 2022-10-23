@@ -1,4 +1,4 @@
-# Development environment setup scripts for Infrastructure as Code (IaC)
+# Setup scripts for local Infrastructure as Code (IaC) development
 
 [![Docker Build and Test](https://github.com/osinfra-io/local-development-setup/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/osinfra-io/local-development-setup/actions/workflows/build-and-test.yml)
 
