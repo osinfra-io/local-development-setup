@@ -44,8 +44,8 @@ jobs:
           context: gentoo
           tags: |
             ghcr.io/osinfra-io/gentoo:test
-          cache-from: type=registry,ref=ghcr.io/osinfra-io/gentoo:latest
-          cache-to: type=inline
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           load: true
 
       - name: Test Gentoo Docker Image
@@ -89,8 +89,8 @@ jobs:
           context: ubuntu
           tags: |
             ghcr.io/osinfra-io/ubuntu:test
-          cache-from: type=registry,ref=ghcr.io/osinfra-io/ubuntu:latest
-          cache-to: type=inline
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           load: true
 
       - name: Test Ubuntu Docker Image

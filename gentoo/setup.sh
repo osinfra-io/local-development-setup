@@ -124,6 +124,8 @@ git pull
 # Pip
 pip3 install -U checkov --user
 
+# Infracost
+curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
 EOF
 
 chmod 755 ~/bin/update.sh
