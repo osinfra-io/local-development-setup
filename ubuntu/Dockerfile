@@ -12,7 +12,6 @@ RUN /bin/bash /tmp/setup.sh
 # Reasonable defaults for Powerlevel10k
 
 COPY .p10k.zsh /home/vscode/.p10k.zsh
-RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> /home/vscode/.zshrc
 
 # checkov:skip=BC_DKR_4: We want this to run on every build
 RUN /home/vscode/bin/update.sh

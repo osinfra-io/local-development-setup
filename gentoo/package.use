@@ -5,8 +5,8 @@ dev-vcs/git gpg curl
 net-misc/curl ssl openssl
 net-misc/openssh ssl
 net-misc/rsync ssl
-
 sys-apps/systemd-utils tmpfiles udev
+sys-process/procps ncurses
 
 */* CURL_SSL: openssl
 
