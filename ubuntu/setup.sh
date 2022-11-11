@@ -104,14 +104,24 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Shell Setup
 cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
-echo 'alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"' >> ~/.zshrc
-echo 'source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
-echo 'source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
-echo 'export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true' >> ~/.zshrc
-echo 'export GPG_TTY=$TTY' >> ~/.zshrc
-echo 'export EDITOR=vim' >> ~/.zshrc
-echo 'export RUBYOPT="-W:no-deprecated -W:no-experimental"' >> ~/.zshrc
-echo 'export BUNDLE_GEMFILE=$HOME/Gemfile' >> ~/.zshrc
+
+cat << 'EOF' >> ~/.zshrc
+alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"
+
+export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true
+export GPG_TTY=$TTY
+export EDITOR=vim
+export RUBYOPT="-W:no-deprecated -W:no-experimental"
+export BUNDLE_GEMFILE=$HOME/Gemfile
+
+zstyle ':completion::complete:*' use-cache 1
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.exports ]] || source ~/.exports
+
+source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+EOF
 
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc

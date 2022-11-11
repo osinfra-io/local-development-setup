@@ -68,16 +68,28 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 # Shell Setup
 cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
-echo 'alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"' >> ~/.zshrc
-echo 'export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true' >> ~/.zshrc
-echo 'export GPG_TTY=$TTY' >> ~/.zshrc
-echo 'export EDITOR=vim' >> ~/.zshrc
-echo 'export RUBYOPT="-W:no-deprecated -W:no-experimental"' >> ~/.zshrc
-echo 'export BUNDLE_GEMFILE=$HOME/Gemfile' >> ~/.zshrc
+
 cat << 'EOF' >> ~/.zshrc
+alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"
+
+export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true
+export GPG_TTY=$TTY
+export EDITOR=vim
+export RUBYOPT="-W:no-deprecated -W:no-experimental"
+export BUNDLE_GEMFILE=$HOME/Gemfile
+
 autoload -U compinit promptinit
       compinit
       promptinit; prompt gentoo
+
+zstyle ':completion::complete:*' use-cache 1
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.exports ]] || source ~/.exports
+
+source ~/google-cloud-sdk/completion.zsh.inc
+source ~/google-cloud-sdk/path.zsh.inc
+source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 EOF
 
 # Create Update Script
@@ -112,6 +124,8 @@ git pull
 # Pip
 pip3 install -U checkov --user
 
+# Infracost
+curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
 EOF
 
 chmod 755 ~/bin/update.sh
