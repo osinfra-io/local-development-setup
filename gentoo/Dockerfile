@@ -1,4 +1,4 @@
-FROM gentoo/stage3:amd64-nomultilib-openrc-20221107
+FROM gentoo/stage3:amd64-nomultilib-openrc-20221114
 
 HEALTHCHECK NONE
 
