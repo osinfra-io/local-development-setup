@@ -18,7 +18,7 @@ tools=(
     bridgecrewio/tap/yor
     checkov
     gcc
-    gcc@5
+    gcc@11
     gh
     go
     hashicorp/tap/terraform
@@ -27,7 +27,6 @@ tools=(
     kubectl
     kubectx
     k9s
-    linux-headers@5.15
     terraform-docs
     pre-commit
     romkatv/powerlevel10k/powerlevel10k
