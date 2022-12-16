@@ -110,10 +110,10 @@ sudo emerge --ask=n --update --deep --newuse @world
 sudo emerge --ask=n --depclean --quiet
 
 # Ruby
-yes | sudo gem update --system
-yes | sudo gem update
-yes | sudo gem cleanup
-sudo bundle update
+yes | gem update --system
+yes | gem update
+yes | gem cleanup
+bundle update
 
 # Pathogen Plugins
 cd ~/.vim/bundle/vim-terraform
