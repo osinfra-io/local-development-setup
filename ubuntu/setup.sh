@@ -45,6 +45,9 @@ done
 git config --global init.templateDir ~/.git-template
 pre-commit init-templatedir ~/.git-template
 
+# Pull with Rebase
+git config --global pull.rebase true
+
 # Zsh
 command -v zsh | sudo tee -a /etc/shells
 
@@ -56,7 +59,6 @@ cat << EOF > ~/Gemfile
 source 'https://rubygems.org'
 
 gem 'kitchen-terraform'
-gem 'inspec'
 gem 'rubocop'
 EOF
 
