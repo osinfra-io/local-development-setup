@@ -2,7 +2,7 @@
 
 # Gentoo
 sudo emerge app-editors/vim app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
-dev-python/pip dev-lang/ruby dev-ruby/bundler dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
+dev-python/pip dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
 app-admin/vault app-admin/kubectx dev-util/github-cli
 
 # Pip
@@ -110,10 +110,8 @@ sudo emerge --ask=n --update --deep --newuse @world
 sudo emerge --ask=n --depclean --quiet
 
 # Ruby
-yes | gem update --system
-yes | gem update
-yes | gem cleanup
 bundle update
+yes | gem cleanup
 
 # Pathogen Plugins
 cd ~/.vim/bundle/vim-terraform
