@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Gentoo
-sudo emerge app-editors/vim app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
+sudo emerge app-editors/vim app-misc/jq app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
 dev-python/pip dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
 app-admin/vault app-admin/kubectx dev-util/github-cli
 
