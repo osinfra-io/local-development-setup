@@ -30,6 +30,7 @@ export RUBYOPT="-W:no-deprecated -W:no-experimental"
 echo 'gem: --no-document' > ~/.gemrc
 cat << EOF > ~/Gemfile
 source 'https://rubygems.org'
+
 gem 'kitchen-terraform'
 gem 'rubocop'
 EOF
