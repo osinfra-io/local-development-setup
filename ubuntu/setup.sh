@@ -48,6 +48,9 @@ pre-commit init-templatedir ~/.git-template
 # Pull with Rebase
 git config --global pull.rebase true
 
+# Prune on Fetch
+git config --global fetch.prune true
+
 # Zsh
 command -v zsh | sudo tee -a /etc/shells
 
