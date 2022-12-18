@@ -102,7 +102,6 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 EOF
 
-echo -e "ZSH_THEME=\"powerlevel10k/powerlevel10k\"\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "export PATH=\$HOME/bin:\$HOME/.go/bin:\$HOME/.gem/bin:\$HOME/.local/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
 # Create Update Script
