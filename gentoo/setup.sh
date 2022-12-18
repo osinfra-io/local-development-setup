@@ -21,6 +21,9 @@ pre-commit init-templatedir ~/.git-template
 # Pull with Rebase
 git config --global pull.rebase true
 
+# Prune on Fetch
+git config --global fetch.prune true
+
 # Ruby Tools
 export RUBYOPT="-W:no-deprecated -W:no-experimental"
 
