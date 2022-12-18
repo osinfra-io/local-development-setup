@@ -79,6 +79,8 @@ export GPG_TTY=$TTY
 export EDITOR=vim
 export RUBYOPT="-W:no-deprecated -W:no-experimental"
 export BUNDLE_GEMFILE=$HOME/Gemfile
+export GEM_HOME=$HOME/.gem
+
 
 autoload -U compinit promptinit
       compinit
@@ -86,12 +88,15 @@ autoload -U compinit promptinit
 
 zstyle ':completion::complete:*' use-cache 1
 
+[[ ! -f  /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ]] || source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.exports ]] || source ~/.exports
 
 source ~/google-cloud-sdk/completion.zsh.inc
 source ~/google-cloud-sdk/path.zsh.inc
-source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
 EOF
 
 # Create Update Script
@@ -111,7 +116,6 @@ sudo emerge --ask=n --depclean --quiet
 
 # Ruby
 bundle update
-yes | gem cleanup
 
 # Pathogen Plugins
 cd ~/.vim/bundle/vim-terraform
