@@ -3,6 +3,7 @@ app-alternatives/bc gnu
 app-alternatives/bzip2 lbzip2
 app-alternatives/gzip pigz
 app-alternatives/lex flex
+app-alternatives/sh bash
 app-alternatives/tar gnu
 app-alternatives/yacc byacc
 app-admin/sudo offensive
