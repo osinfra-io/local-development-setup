@@ -13,10 +13,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew tap bridgecrewio/tap
 
 tools=(
-    awscli
-    azure-cli
     bridgecrewio/tap/yor
-    checkov
     gcc
     gcc@11
     gh
@@ -31,7 +28,6 @@ tools=(
     pre-commit
     romkatv/powerlevel10k/powerlevel10k
     ruby
-    vault
     zsh
     zsh-syntax-highlighting
 )
@@ -140,16 +136,16 @@ source ~/.zshrc
 # Oh-my-zsh
 ${ZSH}/tools/upgrade.sh
 
+# Ubuntu
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y autoremove
+
 # Ruby
 yes | gem update --system
 yes | gem update
 yes | gem cleanup
 bundle update
-
-# Ubuntu
-sudo apt update
-sudo apt -y upgrade
-sudo apt -y autoremove
 
 # Brew
 brew update
