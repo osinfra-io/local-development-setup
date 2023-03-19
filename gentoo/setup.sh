@@ -5,9 +5,6 @@ sudo emerge app-editors/vim app-misc/jq app-shells/zsh app-shells/zsh-syntax-hig
 dev-python/pip dev-lang/ruby dev-lang/go app-admin/helm app-admin/terraform sys-cluster/kubectl dev-vcs/pre-commit \
 app-admin/vault app-admin/kubectx dev-util/github-cli
 
-# Pip
-pip3 install checkov --user
-
 # Go
 go install github.com/terraform-docs/terraform-docs@v0.16.0
 
@@ -85,7 +82,6 @@ export RUBYOPT="-W:no-deprecated -W:no-experimental"
 export BUNDLE_GEMFILE=$HOME/Gemfile
 export GEM_HOME=$HOME/.gem
 
-
 autoload -U compinit promptinit
       compinit
       promptinit; prompt gentoo
@@ -127,12 +123,13 @@ bundle update
 cd ~/.vim/bundle/vim-terraform
 git pull
 
+# powerlevel10k
+cd ${ZSH_CUSTOM}/themes/powerlevel10k
+git pull
+
 # zsh-autocomplete
 cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
-
-# Pip
-pip3 install -U checkov --user
 
 # Infracost
 curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
