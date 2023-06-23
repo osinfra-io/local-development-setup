@@ -1,33 +1,30 @@
 #!/usr/bin/env zsh
 
 # Ubuntu
+
 sudo apt update
 sudo apt -y upgrade
 sudo apt -y install build-essential apt-transport-https vim
 
 # Homebrew
+
 yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Tools
-brew tap bridgecrewio/tap
 
 tools=(
-    bridgecrewio/tap/yor
-    gcc
-    gcc@11
     gh
     go
     hashicorp/tap/terraform
     helm
     infracost
     kubectl
-    kubectx
-    k9s
-    terraform-docs
+    node
     pre-commit
     romkatv/powerlevel10k/powerlevel10k
     ruby
+    terraform-docs
     zsh
     zsh-syntax-highlighting
 )
@@ -38,19 +35,16 @@ do
 done
 
 # Automatically enable pre-commit on repositories
+
 git config --global init.templateDir ~/.git-template
 pre-commit init-templatedir ~/.git-template
 
-# Pull with Rebase
-git config --global pull.rebase true
-
-# Prune on Fetch
-git config --global fetch.prune true
-
 # Zsh
+
 command -v zsh | sudo tee -a /etc/shells
 
 # Ruby Tools
+
 export RUBYOPT="-W:no-deprecated -W:no-experimental"
 
 echo 'gem: --no-document' > ~/.gemrc
@@ -71,10 +65,12 @@ EOF
 gem install bundler
 
 # Pathogen.vim
+
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Pathogen Plugins
+
 cd ~/.vim/bundle
 git clone https://github.com/hashivim/vim-terraform.git
 
@@ -91,18 +87,26 @@ let g:terraform_align=1
 EOF
 
 # Google Cloud SDK
+
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
 | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 sudo apt update && sudo apt -y install google-cloud-sdk
 
 # Oh My Zsh
+
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # zsh-autosuggestions
+
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
+# GitHub Copilot CLI
+
+npm install @githubnext/github-copilot-cli
+
 # Shell Setup
+
 cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
 
 cat << 'EOF' >> ~/.zshrc
@@ -121,12 +125,14 @@ zstyle ':completion::complete:*' use-cache 1
 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+eval "$(github-copilot-cli alias -- "$0")"
 EOF
 
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
 # Create Update Script
+
 mkdir -p ~/bin
 cat << 'EOF' > ~/bin/update.sh
 #!/usr/bin/env zsh
@@ -142,9 +148,6 @@ sudo apt -y upgrade
 sudo apt -y autoremove
 
 # Ruby
-yes | gem update --system
-yes | gem update
-yes | gem cleanup
 bundle update
 
 # Brew
@@ -160,6 +163,9 @@ git pull
 # zsh-autocomplete
 cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
+
+# NPM
+npm update
 EOF
 
 chmod 755 ~/bin/update.sh
