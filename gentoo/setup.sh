@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+set -e
+cd ~
+
 # Gentoo
 
 sudo emerge app-editors/vim app-misc/jq app-shells/zsh app-shells/zsh-syntax-highlighting gentoo-zsh-completions dev-vcs/git dev-lang/python \
@@ -45,8 +48,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Pathogen Plugins
 
-cd ~/.vim/bundle
-git clone https://github.com/hashivim/vim-terraform.git
+git clone https://github.com/hashivim/vim-terraform.git ~/.vim/bundle
 
 cat << EOF > ~/.vimrc
 set visualbell
@@ -110,7 +112,7 @@ complete -o nospace -C /usr/bin/terraform terraform
 eval "$(github-copilot-cli alias -- "$0")"
 EOF
 
-echo -e "export PATH=\$HOME/bin:\$HOME/.go/bin:\$HOME/.gem/bin:\$HOME/.local/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
+echo -e "export PATH=\$HOME/bin:\$HOME/.go/bin:\$HOME/.gem/bin:\$HOME/.local/bin:\$HOME/node_modules/.bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
 # Create Update Script
 

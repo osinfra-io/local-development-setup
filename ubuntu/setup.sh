@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+set -e
+cd ~
+
 # Ubuntu
 
 sudo apt update
@@ -71,8 +74,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Pathogen Plugins
 
-cd ~/.vim/bundle
-git clone https://github.com/hashivim/vim-terraform.git
+git clone https://github.com/hashivim/vim-terraform.git ~/.vim/bundle
 
 cat << EOF > ~/.vimrc
 set visualbell
@@ -129,7 +131,7 @@ eval "$(github-copilot-cli alias -- "$0")"
 EOF
 
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
-echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.1.0/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
+echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin:\$HOME/node_modules/.bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
 # Create Update Script
 

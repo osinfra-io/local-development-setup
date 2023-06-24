@@ -21,7 +21,7 @@ sys-process/procps ncurses
 
 */* CURL_SSL: openssl
 
-*/* PYTHON_TARGETS: python3_12
-*/* PYTHON_SINGLE_TARGET: python3_12
+*/* PYTHON_TARGETS: python3_11
+*/* PYTHON_SINGLE_TARGET: python3_11
 
 */* RUBY_TARGETS: ruby32
