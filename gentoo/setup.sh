@@ -48,7 +48,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Pathogen Plugins
 
-git clone https://github.com/hashivim/vim-terraform.git ~/.vim/bundle
+git clone https://github.com/hashivim/vim-terraform ~/.vim/bundle/vim-terraform
 
 cat << EOF > ~/.vimrc
 set visualbell
@@ -82,7 +82,9 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 # Shell Setup
 
-cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
+if [ -f ~/.zshrc ]; then
+    cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
+fi
 
 cat << 'EOF' >> ~/.zshrc
 alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"

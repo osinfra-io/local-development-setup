@@ -74,7 +74,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Pathogen Plugins
 
-git clone https://github.com/hashivim/vim-terraform.git ~/.vim/bundle
+git clone https://github.com/hashivim/vim-terraform ~/.vim/bundle/vim-terraform
 
 cat << EOF > ~/.vimrc
 set visualbell
@@ -95,10 +95,6 @@ echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.clou
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 sudo apt update && sudo apt -y install google-cloud-sdk
 
-# Oh My Zsh
-
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
 # zsh-autosuggestions
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -109,9 +105,12 @@ npm install @githubnext/github-copilot-cli
 
 # Shell Setup
 
-cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
+if [ -f ~/.zshrc ]; then
+    cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
+fi
 
 cat << 'EOF' >> ~/.zshrc
+plugins=(git terraform gcloud bundler docker kubectl gem helm kitchen zsh-autosuggestions)
 alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"
 
 export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true

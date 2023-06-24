@@ -23,6 +23,6 @@ RUN /bin/bash /tmp/setup.sh
 COPY .p10k.zsh /home/vscode/.p10k.zsh
 RUN sed -i 's/^ZSH_THEME=".\+"$/ZSH_THEME=\"powerlevel10k\/powerlevel10k"/g' /home/vscode/.zshrc
 
-#RUN /home/vscode/bin/update.sh
+RUN /home/vscode/bin/update.sh
 
 CMD ["zsh"]
