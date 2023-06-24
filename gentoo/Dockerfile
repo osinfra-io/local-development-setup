@@ -1,7 +1,5 @@
 FROM gentoo/stage3:amd64-nomultilib-openrc-20230619
 
-HEALTHCHECK NONE
-
 COPY make.conf /etc/portage/make.conf
 RUN rm -rf /etc/portage/package.use
 COPY package.use /etc/portage/package.use
@@ -24,8 +22,6 @@ RUN /bin/bash /tmp/setup.sh
 
 COPY .p10k.zsh /home/vscode/.p10k.zsh
 RUN sed -i 's/^ZSH_THEME=".\+"$/ZSH_THEME=\"powerlevel10k\/powerlevel10k"/g' /home/vscode/.zshrc
-
-# checkov:skip=BC_DKR_4: We want this to run on every build
 
 RUN /home/vscode/bin/update.sh
 

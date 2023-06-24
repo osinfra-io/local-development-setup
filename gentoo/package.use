@@ -3,17 +3,19 @@ app-alternatives/bc gnu
 app-alternatives/bzip2 lbzip2
 app-alternatives/gzip pigz
 app-alternatives/lex flex
-app-alternatives/sh bash
 app-alternatives/tar gnu
+app-alternatives/sh bash
 app-alternatives/yacc byacc
 app-admin/sudo offensive
 app-shells/zsh unicode
 dev-lang/python ssl sqlite
 dev-lang/ruby ssl
 dev-vcs/git gpg curl
+net-libs/nodejs npm ssl icu
 net-misc/curl ssl openssl
 net-misc/openssh ssl
 net-misc/rsync ssl
+sys-apps/dbus systemd
 sys-apps/systemd-utils tmpfiles udev
 sys-process/procps ncurses
 

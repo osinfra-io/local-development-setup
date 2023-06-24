@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:1.0.13-ubuntu22.04
 
-HEALTHCHECK NONE
-
 RUN chsh vscode -s /usr/bin/zsh
 
 USER vscode
@@ -13,7 +11,6 @@ RUN /bin/bash /tmp/setup.sh
 
 COPY .p10k.zsh /home/vscode/.p10k.zsh
 
-# checkov:skip=BC_DKR_4: We want this to run on every build
 RUN /home/vscode/bin/update.sh
 
 CMD ["zsh"]
