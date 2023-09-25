@@ -1,4 +1,4 @@
-FROM gentoo/stage3:amd64-nomultilib-openrc-20230918
+FROM gentoo/stage3:amd64-nomultilib-openrc-20230925
 
 COPY make.conf /etc/portage/make.conf
 RUN rm -rf /etc/portage/package.use
