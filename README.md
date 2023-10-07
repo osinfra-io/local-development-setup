@@ -11,9 +11,9 @@ When you invest in Infrastructure as Code (IaC), you will find that onboarding d
 
 ## <img align="left" width="25" height="25" src="https://user-images.githubusercontent.com/1610100/194944104-53a1b3f0-81c5-4759-835d-9b3a8608f38e.png">Gentoo Setup
 
-To install all the local tools we will need you can run the following commands.
+You can run the following commands to install all the local tools we will need.
 
-This is optional but will allow for `sudo` access without entering a password.
+This is optional but allows `sudo` access without entering a password.
 
 ```none
  echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo
@@ -29,9 +29,9 @@ Change your default shell to Zsh and exit.
 chsh -s /bin/zsh; exit
 ```
 
-When you start the terminal you will be prompted to set up [Powerlevel10k](https://github.com/romkatv/powerlevel10k). Choose the options you like and go!
+When you start the terminal, you will be prompted to set up [Powerlevel10k](https://github.com/romkatv/powerlevel10k). Choose the options you like and go!
 
-Once complete you can stay up to date by running the generated update script.
+Once complete, you can stay current by running the generated update script.
 
 ```none
 ~/bin/update.sh
@@ -39,9 +39,9 @@ Once complete you can stay up to date by running the generated update script.
 
 ## <img align="left" width="25" height="25" src="https://user-images.githubusercontent.com/1610100/196566203-0acc19c8-f1d9-4481-9424-24da28c53d99.png">Ubuntu Setup
 
-To install all the local tools we will need you can run the following commands.
+You can run the following commands to install all the local tools we will need.
 
-*The following step is optional but will allow for sudo access without entering a password.*
+*The following step is optional but allows sudo access without entering a password.*
 
 ```none
  echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo
@@ -57,19 +57,19 @@ Change your default shell to Zsh and exit.
 chsh -s /home/linuxbrew/.linuxbrew/bin/zsh; exit
 ```
 
-When you start your terminal you will be prompted to set up Powerlevel10k. Choose the options you like and go!
+You will be prompted to set up Powerlevel10k when you start your terminal. Choose the options you like and go!
 
-Once complete you can stay up to date by running the generated update script.
+Once complete, you can stay current by running the generated update script.
 
 ```none
 ~/bin/update.sh
 ```
 
-### Cloud providers tools
+### Cloud provider tools
 
 #### Google Cloud SDK
 
-The [Google Cloud SDK](https://cloud.google.com/sdk) provides tools and libraries for interacting with Google Cloud products and services. It manages authentication, local configuration, developer workflow, interactions with Google Cloud APIs.
+The [Google Cloud SDK](https://cloud.google.com/sdk) provides tools and libraries for interacting with Google Cloud products and services. It manages authentication, local configuration, developer workflow, and interactions with Google Cloud APIs.
 
 ### Open-source tools
 
