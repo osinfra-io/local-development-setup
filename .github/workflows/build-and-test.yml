@@ -39,7 +39,7 @@ jobs:
       # https://github.com/marketplace/actions/build-and-push-docker-images
 
       - name: Build Gentoo Docker Image
-        uses: docker/build-push-action@v5.0.0
+        uses: docker/build-push-action@v5.1.0
         with:
           context: gentoo
           tags: |
@@ -84,7 +84,7 @@ jobs:
       # https://github.com/marketplace/actions/build-and-push-docker-images
 
       - name: Build Ubuntu Docker Image
-        uses: docker/build-push-action@v5.0.0
+        uses: docker/build-push-action@v5.1.0
         with:
           context: ubuntu
           tags: |
