@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:1.0.18-ubuntu22.04
+FROM mcr.microsoft.com/vscode/devcontainers/base:1.0.19-ubuntu22.04
 
 RUN chsh vscode -s /usr/bin/zsh
 
