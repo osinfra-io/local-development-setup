@@ -8,6 +8,8 @@ jobs:
   build-and-push-ubuntu-docker-image:
     name: Build and Push Ubuntu Docker Image
     runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.ref_name }}
 
     steps:
       # Checkout
@@ -40,6 +42,7 @@ jobs:
         with:
           context: ubuntu
           tags: |
+            ghcr.io/osinfra-io/ubuntu:${{ env.VERSION }}
             ghcr.io/osinfra-io/ubuntu:latest
           cache-from: type=registry,ref=ghcr.io/osinfra-io/ubuntu:latest
           cache-to: type=inline
