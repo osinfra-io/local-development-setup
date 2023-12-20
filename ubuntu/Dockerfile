@@ -6,13 +6,13 @@ RUN chsh vscode -s /usr/bin/zsh
 
 USER vscode
 
-COPY setup.sh /tmp/setup.sh
+COPY --chown=vscode:vscode setup.sh /tmp/setup.sh
 
 RUN ./tmp/setup.sh && \
 	rm /tmp/setup.sh
 
 # Reasonable defaults for Powerlevel10k
 
-COPY .p10k.zsh /home/vscode/.p10k.zsh
+COPY --chown=vscode:vscode .p10k.zsh /home/vscode/.p10k.zsh
 
 CMD ["zsh"]
