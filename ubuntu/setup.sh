@@ -54,7 +54,7 @@ echo 'gem: --no-document' > ~/.gemrc
 cat << EOF > ~/Gemfile
 source 'https://rubygems.org'
 
-gem 'kitchen-terraform', '~> 7.0'
+gem 'kitchen-terraform', '~> 7.0.2'
 gem 'rubocop'
 gem 'ruby-lsp'
 EOF
@@ -118,8 +118,11 @@ if [ -f ~/.zshrc ]; then
     cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
 fi
 
+# Comment out default plugins
+
+sed -i '/^plugins=(git)$/s/^/#/' ~/.zshrc
+
 cat << 'EOF' >> ~/.zshrc
-plugins=(git terraform gcloud bundler docker kubectl gem helm kitchen zsh-autosuggestions)
 alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"
 
 export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true
@@ -137,6 +140,7 @@ source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highl
 source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 EOF
 
+echo -e "plugins=(git terraform gcloud bundler docker kubectl gem helm kitchen zsh-autosuggestions)\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin:\$HOME/node_modules/.bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
