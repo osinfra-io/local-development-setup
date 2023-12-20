@@ -3,17 +3,12 @@
 set -e
 cd ~
 
-# Ubuntu
-
-sudo apt update
-sudo apt -y install build-essential apt-transport-https vim
-
 # Homebrew
 
 yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# Tools
+# Brew managed tools
 
 tools=(
     fzf
@@ -27,11 +22,11 @@ tools=(
     kubectl
     kubectx
     k9s
+    opa
     pre-commit
     romkatv/powerlevel10k/powerlevel10k
     ruby
     terraform-docs
-    zsh
     zsh-syntax-highlighting
 )
 
@@ -46,7 +41,7 @@ pre-commit init-templatedir ~/.git-template
 
 command -v zsh | sudo tee -a /etc/shells
 
-# Ruby Tools
+# Ruby tools
 
 export RUBYOPT="-W:no-deprecated -W:no-experimental"
 
@@ -73,7 +68,7 @@ bundle install
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-# Pathogen Plugins
+# Pathogen plugins
 
 git clone https://github.com/hashivim/vim-terraform ~/.vim/bundle/vim-terraform
 
@@ -89,7 +84,7 @@ let g:terraform_fmt_on_save=1
 let g:terraform_align=1
 EOF
 
-# GitHub Extensions
+# GitHub extensions
 
 # For some reason we need to authenticate to GitHub to install extensions
 
@@ -112,7 +107,7 @@ fi
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-# Shell Setup
+# Shell setup
 
 if [ -f ~/.zshrc ]; then
     cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
@@ -141,7 +136,7 @@ EOF
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin:\$HOME/node_modules/.bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
-# Create Update Script
+# Create update script
 
 mkdir -p ~/bin
 cat << 'EOF' > ~/bin/update.sh
