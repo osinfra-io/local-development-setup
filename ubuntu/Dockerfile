@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:1.0.19-ubuntu22.04
 
-COPY setup.sh /tmp/setup.sh
-
 # We need to run this as root then switch to vscode vs. having everything in the same RUN command
 
 RUN chsh vscode -s /usr/bin/zsh
 
 USER vscode
+
+COPY setup.sh /tmp/setup.sh
 
 RUN ./tmp/setup.sh && \
 	rm /tmp/setup.sh
