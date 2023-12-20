@@ -1,16 +1,18 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:1.0.19-ubuntu22.04
 
+# We need to run this as root then switch to vscode vs. having everything in the same RUN command
+
 RUN chsh vscode -s /usr/bin/zsh
 
 USER vscode
 
-COPY setup.sh /tmp/setup.sh
-RUN /bin/bash /tmp/setup.sh
+COPY --chown=vscode:vscode setup.sh /tmp/setup.sh
+
+RUN ./tmp/setup.sh && \
+	rm /tmp/setup.sh
 
 # Reasonable defaults for Powerlevel10k
 
-COPY .p10k.zsh /home/vscode/.p10k.zsh
-
-RUN /home/vscode/bin/update.sh
+COPY --chown=vscode:vscode .p10k.zsh /home/vscode/.p10k.zsh
 
 CMD ["zsh"]

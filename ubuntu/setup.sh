@@ -6,36 +6,36 @@ cd ~
 # Ubuntu
 
 sudo apt update
-sudo apt -y upgrade
-sudo apt -y install build-essential apt-transport-https vim
+sudo apt -y install vim
 
 # Homebrew
 
 yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# Tools
+# Brew managed tools
 
 tools=(
+    fzf
     gh
     go
     hashicorp/tap/terraform
     helm
     infracost
+    istioctl
+    jq
     kubectl
-    node
+    kubectx
+    k9s
+    opa
     pre-commit
     romkatv/powerlevel10k/powerlevel10k
     ruby
     terraform-docs
-    zsh
     zsh-syntax-highlighting
 )
 
-for tool in "${tools[@]}"
-do
-    brew install ${tool}
-done
+brew install "${tools[@]}"
 
 # Automatically enable pre-commit on repositories
 
@@ -46,7 +46,7 @@ pre-commit init-templatedir ~/.git-template
 
 command -v zsh | sudo tee -a /etc/shells
 
-# Ruby Tools
+# Ruby tools
 
 export RUBYOPT="-W:no-deprecated -W:no-experimental"
 
@@ -54,8 +54,9 @@ echo 'gem: --no-document' > ~/.gemrc
 cat << EOF > ~/Gemfile
 source 'https://rubygems.org'
 
-gem 'kitchen-terraform'
+gem 'kitchen-terraform', '~> 7.0.2'
 gem 'rubocop'
+gem 'ruby-lsp'
 EOF
 
 export BUNDLE_GEMFILE="~/Gemfile"
@@ -65,14 +66,14 @@ Style/FrozenStringLiteralComment:
           Enabled: false
 EOF
 
-gem install bundler
+bundle install
 
 # Pathogen.vim
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-# Pathogen Plugins
+# Pathogen plugins
 
 git clone https://github.com/hashivim/vim-terraform ~/.vim/bundle/vim-terraform
 
@@ -87,6 +88,12 @@ syntax on
 let g:terraform_fmt_on_save=1
 let g:terraform_align=1
 EOF
+
+# GitHub extensions
+
+# For some reason we need to authenticate to GitHub to install extensions
+
+# gh extension install github/gh-copilot github/gh-projects actions/gh-actions-cache advanced-security/gh-sbom
 
 # Google Cloud SDK
 
@@ -105,18 +112,17 @@ fi
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-# GitHub Copilot CLI
-
-npm install @githubnext/github-copilot-cli
-
-# Shell Setup
+# Shell setup
 
 if [ -f ~/.zshrc ]; then
     cp ~/.zshrc ~/.zshrc-`date +"%Y%m%d_%H%M%S"`.bak
 fi
 
+# Comment out default plugins
+
+sed -i '/^plugins=(git)$/s/^/#/' ~/.zshrc
+
 cat << 'EOF' >> ~/.zshrc
-plugins=(git terraform gcloud bundler docker kubectl gem helm kitchen zsh-autosuggestions)
 alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"
 
 export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true
@@ -131,14 +137,14 @@ zstyle ':completion::complete:*' use-cache 1
 [[ ! -f ~/.exports ]] || source ~/.exports
 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-eval "$(github-copilot-cli alias -- "$0")"
+source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 EOF
 
+echo -e "plugins=(git terraform gcloud bundler docker kubectl gem helm kitchen zsh-autosuggestions)\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin:\$HOME/node_modules/.bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
-# Create Update Script
+# Create update script
 
 mkdir -p ~/bin
 cat << 'EOF' > ~/bin/update.sh
@@ -156,6 +162,7 @@ sudo apt -y autoremove
 
 # Ruby
 bundle update
+bundle clean --force
 
 # Brew
 brew update
@@ -171,8 +178,6 @@ git pull
 cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
 
-# NPM
-npm update
 EOF
 
 chmod 755 ~/bin/update.sh
