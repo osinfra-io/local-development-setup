@@ -1,11 +1,14 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:1.0.19-ubuntu22.04
 
-USER vscode
-
 COPY setup.sh /tmp/setup.sh
 
-RUN chsh vscode -s /usr/bin/zsh && \
-	./tmp/setup.sh && \
+# We need to run this as root then switch to vscode vs. having everything in the same RUN command
+
+RUN chsh vscode -s /usr/bin/zsh
+
+USER vscode
+
+RUN ./tmp/setup.sh && \
 	rm /tmp/setup.sh
 
 # Reasonable defaults for Powerlevel10k
