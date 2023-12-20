@@ -9,34 +9,6 @@ When you invest in Infrastructure as Code (IaC), you will find that onboarding d
 - Standardized IaC developer environments
 - Simplify onboarding so new IaC developers can contribute easier
 
-## <img align="left" width="25" height="25" src="https://user-images.githubusercontent.com/1610100/194944104-53a1b3f0-81c5-4759-835d-9b3a8608f38e.png">Gentoo Setup
-
-You can run the following commands to install all the local tools we will need.
-
-This is optional but allows `sudo` access without entering a password.
-
-```none
- echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo
-```
-
-```none
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/osinfra-io/local-development-setup/main/gentoo/setup.sh)"
-```
-
-Change your default shell to Zsh and exit.
-
-```none
-chsh -s /bin/zsh; exit
-```
-
-When you start the terminal, you will be prompted to set up [Powerlevel10k](https://github.com/romkatv/powerlevel10k). Choose the options you like and go!
-
-Once complete, you can stay current by running the generated update script.
-
-```none
-~/bin/update.sh
-```
-
 ## <img align="left" width="25" height="25" src="https://user-images.githubusercontent.com/1610100/196566203-0acc19c8-f1d9-4481-9424-24da28c53d99.png">Ubuntu Setup
 
 You can run the following commands to install all the local tools we will need.
@@ -74,7 +46,6 @@ The [Google Cloud SDK](https://cloud.google.com/sdk) provides tools and librarie
 ### Open-source tools
 
 - [github-cli](https://github.com/cli/cli)
-- [github-copilot-cli](https://www.npmjs.com/package/@githubnext/github-copilot-cli)
 - [infracost](https://github.com/infracost/infracost)
 - [inspec](https://github.com/inspec/inspec)
 - [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
@@ -85,7 +56,7 @@ The [Google Cloud SDK](https://cloud.google.com/sdk) provides tools and librarie
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
 - [vim-terraform](https://github.com/hashivim/vim-terraform)
 
-### Zsh stuff
+### Zsh tools
 
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k)

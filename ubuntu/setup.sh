@@ -6,7 +6,6 @@ cd ~
 # Ubuntu
 
 sudo apt update
-sudo apt -y upgrade
 sudo apt -y install build-essential apt-transport-https vim
 
 # Homebrew
@@ -17,13 +16,17 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Tools
 
 tools=(
+    fzf
     gh
     go
     hashicorp/tap/terraform
     helm
     infracost
+    istioctl
+    jq
     kubectl
-    node
+    kubectx
+    k9s
     pre-commit
     romkatv/powerlevel10k/powerlevel10k
     ruby
@@ -32,10 +35,7 @@ tools=(
     zsh-syntax-highlighting
 )
 
-for tool in "${tools[@]}"
-do
-    brew install ${tool}
-done
+brew install "${tools[@]}"
 
 # Automatically enable pre-commit on repositories
 
@@ -56,6 +56,7 @@ source 'https://rubygems.org'
 
 gem 'kitchen-terraform'
 gem 'rubocop'
+gem 'ruby-lsp'
 EOF
 
 export BUNDLE_GEMFILE="~/Gemfile"
@@ -65,7 +66,7 @@ Style/FrozenStringLiteralComment:
           Enabled: false
 EOF
 
-gem install bundler
+bundle install
 
 # Pathogen.vim
 
@@ -88,6 +89,12 @@ let g:terraform_fmt_on_save=1
 let g:terraform_align=1
 EOF
 
+# GitHub Extensions
+
+# For some reason we need to authenticate to GitHub to install extensions
+
+# gh extension install github/gh-copilot github/gh-projects actions/gh-actions-cache advanced-security/gh-sbom
+
 # Google Cloud SDK
 
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
@@ -104,10 +111,6 @@ fi
 # zsh-autosuggestions
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# GitHub Copilot CLI
-
-npm install @githubnext/github-copilot-cli
 
 # Shell Setup
 
@@ -156,6 +159,7 @@ sudo apt -y autoremove
 
 # Ruby
 bundle update
+bundle clean --force
 
 # Brew
 brew update
@@ -171,8 +175,6 @@ git pull
 cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
 
-# NPM
-npm update
 EOF
 
 chmod 755 ~/bin/update.sh
