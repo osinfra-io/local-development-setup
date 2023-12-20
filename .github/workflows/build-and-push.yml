@@ -9,7 +9,7 @@ jobs:
     name: Build and Push Ubuntu Docker Image
     runs-on: ubuntu-latest
     env:
-      VERSION: ${{ github.ref_name }}
+      VERSION: ${{ github.event.release.tag_name }}
 
     steps:
       # Checkout
