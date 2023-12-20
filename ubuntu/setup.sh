@@ -3,6 +3,11 @@
 set -e
 cd ~
 
+# Ubuntu
+
+sudo apt update
+sudo apt -y install vim
+
 # Homebrew
 
 yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -49,7 +54,7 @@ echo 'gem: --no-document' > ~/.gemrc
 cat << EOF > ~/Gemfile
 source 'https://rubygems.org'
 
-gem 'kitchen-terraform'
+gem 'kitchen-terraform', '~> 7.0'
 gem 'rubocop'
 gem 'ruby-lsp'
 EOF
@@ -129,8 +134,7 @@ zstyle ':completion::complete:*' use-cache 1
 [[ ! -f ~/.exports ]] || source ~/.exports
 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-eval "$(github-copilot-cli alias -- "$0")"
+source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 EOF
 
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
