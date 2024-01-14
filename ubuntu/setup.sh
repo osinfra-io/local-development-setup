@@ -46,27 +46,16 @@ pre-commit init-templatedir ~/.git-template
 
 command -v zsh | sudo tee -a /etc/shells
 
-# Ruby tools
+# Ruby
 
 export RUBYOPT="-W:no-deprecated -W:no-experimental"
 
 echo 'gem: --no-document' > ~/.gemrc
-cat << EOF > ~/Gemfile
-source 'https://rubygems.org'
-
-gem 'kitchen-terraform', '~> 7.0.2'
-gem 'rubocop'
-gem 'ruby-lsp'
-EOF
-
-export BUNDLE_GEMFILE="~/Gemfile"
 
 cat << EOF > ~/.rubocop.yml
 Style/FrozenStringLiteralComment:
           Enabled: false
 EOF
-
-bundle install
 
 # Pathogen.vim
 
@@ -129,7 +118,6 @@ export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true
 export GPG_TTY=$TTY
 export EDITOR=vim
 export RUBYOPT="-W:no-deprecated -W:no-experimental"
-export BUNDLE_GEMFILE=$HOME/Gemfile
 
 zstyle ':completion::complete:*' use-cache 1
 
@@ -142,7 +130,7 @@ EOF
 
 echo -e "plugins=(git terraform gcloud bundler docker kubectl gem helm kitchen zsh-autosuggestions)\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
-echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin:\$HOME/node_modules/.bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
+echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.3.0/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
 # Create update script
 
@@ -159,10 +147,6 @@ ${ZSH}/tools/upgrade.sh
 sudo apt update
 sudo apt -y upgrade
 sudo apt -y autoremove
-
-# Ruby
-bundle update
-bundle clean --force
 
 # Brew
 brew update
