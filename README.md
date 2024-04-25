@@ -34,31 +34,5 @@ You will be prompted to set up Powerlevel10k when you start your terminal. Choos
 Once complete, you can stay current by running the generated update script.
 
 ```none
-~/bin/update.sh
+~/bin/update.zsh
 ```
-
-### Cloud provider tools
-
-#### Google Cloud SDK
-
-The [Google Cloud SDK](https://cloud.google.com/sdk) provides tools and libraries for interacting with Google Cloud products and services. It manages authentication, local configuration, developer workflow, and interactions with Google Cloud APIs.
-
-### Open-source tools
-
-- [github-cli](https://github.com/cli/cli)
-- [infracost](https://github.com/infracost/infracost)
-- [inspec](https://github.com/inspec/inspec)
-- [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
-- [pathogen.vim](https://github.com/tpope/vim-pathogen)
-- [pre-commit](https://github.com/pre-commit/pre-commit)
-- [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
-- [terraform](https://github.com/hashicorp/terraform)
-- [terraform-docs](https://github.com/terraform-docs/terraform-docs)
-- [vim-terraform](https://github.com/hashivim/vim-terraform)
-
-### Zsh tools
-
-- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
