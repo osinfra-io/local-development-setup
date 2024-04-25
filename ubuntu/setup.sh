@@ -29,7 +29,7 @@ tools=(
     k9s
     opa
     pre-commit
-    romkatv/powerlevel10k/powerlevel10k
+    powerlevel10k
     terraform-docs
     zsh-syntax-highlighting
 )
