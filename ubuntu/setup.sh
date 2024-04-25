@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -e
 cd ~
@@ -29,8 +29,7 @@ tools=(
     k9s
     opa
     pre-commit
-    romkatv/powerlevel10k/powerlevel10k
-    ruby
+    powerlevel10k
     terraform-docs
     zsh-syntax-highlighting
 )
@@ -45,17 +44,6 @@ pre-commit init-templatedir ~/.git-template
 # Zsh
 
 command -v zsh | sudo tee -a /etc/shells
-
-# Ruby
-
-export RUBYOPT="-W:no-deprecated -W:no-experimental"
-
-echo 'gem: --no-document' > ~/.gemrc
-
-cat << EOF > ~/.rubocop.yml
-Style/FrozenStringLiteralComment:
-          Enabled: false
-EOF
 
 # Pathogen.vim
 
@@ -89,7 +77,7 @@ EOF
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
 | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-sudo apt update && sudo apt -y install google-cloud-sdk
+sudo apt update && sudo apt -y install google-cloud-sdk google-cloud-sdk-gke-gcloud-auth-plugin
 
 # Oh My Zsh
 
@@ -117,7 +105,6 @@ alias gpg-passphrase="echo "test" | gpg --clearsign > /dev/null 2>&1"
 export GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS=true
 export GPG_TTY=$TTY
 export EDITOR=vim
-export RUBYOPT="-W:no-deprecated -W:no-experimental"
 
 zstyle ':completion::complete:*' use-cache 1
 
@@ -126,16 +113,22 @@ zstyle ':completion::complete:*' use-cache 1
 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
+
+unsetopt correct_all
+setopt correct
+
+eval "$(gh copilot alias -- zsh)"
+eval "$(fzf --zsh)"
 EOF
 
-echo -e "plugins=(git terraform gcloud bundler docker kubectl gem helm kitchen zsh-autosuggestions)\n$(cat ~/.zshrc)" > ~/.zshrc
+echo -e "plugins=(git terraform gcloud docker kubectl helm zsh-autosuggestions)\n$(cat ~/.zshrc)" > ~/.zshrc
 echo -e "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"\n$(cat ~/.zshrc)" > ~/.zshrc
-echo -e "export PATH=\$HOME/bin:/home/linuxbrew/.linuxbrew/lib/ruby/gems/3.3.0/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
+echo -e "export PATH=\$HOME/bin:\$PATH\n$(cat ~/.zshrc)" > ~/.zshrc
 
 # Create update script
 
 mkdir -p ~/bin
-cat << 'EOF' > ~/bin/update.sh
+cat << 'EOF' > ~/bin/update.zsh
 #!/usr/bin/env zsh
 
 source ~/.zshrc
@@ -154,6 +147,9 @@ brew upgrade
 brew autoremove
 brew cleanup
 
+# GitHub
+gh extension upgrade --all
+
 # Pathogen Plugins
 cd ~/.vim/bundle/vim-terraform
 git pull
@@ -161,7 +157,6 @@ git pull
 # zsh-autocomplete
 cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 git pull
-
 EOF
 
-chmod 755 ~/bin/update.sh
+chmod 755 ~/bin/update.zsh
