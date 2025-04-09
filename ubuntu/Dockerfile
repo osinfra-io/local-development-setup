@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:1.2.4-ubuntu22.04
+FROM mcr.microsoft.com/vscode/devcontainers/base:1.2.5-ubuntu22.04
 
 # We need to run this as root then switch to vscode vs. having everything in the same RUN command
 
