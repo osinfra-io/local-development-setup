@@ -43,7 +43,7 @@ jobs:
       # https://github.com/marketplace/actions/build-and-push-docker-images
 
       - name: Build Ubuntu Docker Image
-        uses: docker/build-push-action@v6.14.0
+        uses: docker/build-push-action@v6.16.0
         with:
           context: ubuntu
           tags: |
