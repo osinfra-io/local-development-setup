@@ -19,18 +19,17 @@ tools=(
     fzf
     gh
     go
-    hashicorp/tap/terraform
     helm
-    infracost
     istioctl
     jq
     kubectl
+    kubectl-ai
     kubectx
     k9s
     opa
+    opentofu
     pre-commit
     powerlevel10k
-    terraform-docs
     zsh-syntax-highlighting
 )
 
@@ -45,25 +44,11 @@ pre-commit init-templatedir ~/.git-template
 
 command -v zsh | sudo tee -a /etc/shells
 
-# Pathogen.vim
-
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-# Pathogen plugins
-
-git clone https://github.com/hashivim/vim-terraform ~/.vim/bundle/vim-terraform
-
 cat << EOF > ~/.vimrc
 set visualbell
 
-execute pathogen#infect()
-
 filetype plugin indent on
 syntax on
-
-let g:terraform_fmt_on_save=1
-let g:terraform_align=1
 EOF
 
 # GitHub extensions
@@ -149,10 +134,6 @@ brew cleanup
 
 # GitHub
 gh extension upgrade --all
-
-# Pathogen Plugins
-cd ~/.vim/bundle/vim-terraform
-git pull
 
 # zsh-autocomplete
 cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
